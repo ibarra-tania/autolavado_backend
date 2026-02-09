@@ -1,0 +1,33 @@
+[MASTER]
+init-hook='import sys; sys.path.append(".")'
+
+[MESSAGES CONTROL]
+disable=
+    # Reglas específicas para SQLAlchemy
+    too-few-public-methods,
+    missing-docstring,
+    invalid-name,
+    # Otras reglas opcionales
+    redefined-builtin,
+    broad-except,
+    
+# O puedes habilitar solo errores críticos
+# enable=all
+
+[BASIC]
+# Nombres buenos para variables cortas
+good-names=i,j,k,ex,Run,_,id,db,Base
+
+# Mínimo de métodos públicos
+min-public-methods=0
+
+# Longitud máxima de línea
+max-line-length=79
+
+[DESIGN]
+# Máximo de atributos en una clase
+max-attributes=20
+
+[FORMAT]
+# Acepta espacios después de comas en imports
+single-line-if-stmt=no
