@@ -31,3 +31,4 @@ max-attributes=20
 [FORMAT]
 # Acepta espacios después de comas en imports
 single-line-if-stmt=no
+

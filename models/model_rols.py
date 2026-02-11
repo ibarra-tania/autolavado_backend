@@ -12,5 +12,7 @@ class Rol(Base):
     __tablename__ = "tbc_roles"
 
     id = Column(Integer, primary_key=True, index=True)
-    descripcion = Column(String(60))
+    nombreRol = Column(String(60))
     estatus = Column(Boolean)
+    fecha_creacion = Column(DateTime)
+    fecha_modificacion = Column(DateTime)

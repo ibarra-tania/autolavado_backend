@@ -15,3 +15,6 @@ class Servicio(Base):
     nombre = Column(String(60))
     descripcion = Column(String(120))
     costo = Column(Float)
+    estado = Column(Boolean)
+    duracionMinutos = Column(Integer)
+    id_user = Column(Integer, ForeignKey("tbb_users.id"))

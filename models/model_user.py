@@ -16,10 +16,12 @@ class User(Base):
     nombre = Column(String(60))
     papellido = Column(String(60))
     sapellido = Column(String(60))
+    direccion = Column(String(200))
+    correo = Column(String(80))    
     usuario = Column(String(60))
     contrasena = Column(String(60))
     telefono = Column(String(15))
     estatus = Column(Boolean)
     fecha_registro = Column(DateTime)
     fecha_modificacion = Column(DateTime)
-    correo = Column(String(80))
+
