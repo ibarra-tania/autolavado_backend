@@ -1,42 +1,35 @@
-"""
-Esquemas Pydantic para Vehiculo.
-"""
+'''
+Docstring for schemas.schema_vehiculos
+'''
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict
 
-from typing import Optional
-from pydantic import BaseModel
-
-# pylint: disable=too-few-public-methods
 class VehiculoBase(BaseModel):
-    """
-    Esquema base de Vehiculo.
-    """
+    '''Clase para modelar los campos de tabla Vehiculos'''
+    usuario_Id: int
+    placas: str
+    marca: str
     modelo: str
-    matricula: str
-    color: Optional[str]
-    numero: Optional[str]
-    id_cliente: int
+    anio: int
+    color: str
+    tipo: str
+    numero_serie: str
+    estado: bool
+    fecha_registro: datetime
+    fecha_actualizacion: datetime
 
-
+# pylint: disable=too-few-public-methods, unnecessary-pass
 class VehiculoCreate(VehiculoBase):
-    """
-    Esquema para crear vehiculo.
-    """
-
+    '''Clase para crear un Vehiculo basado en la tabla Vehiculos'''
+    pass
 
 class VehiculoUpdate(VehiculoBase):
-    """
-    Esquema para actualizar vehiculo.
-    """
+    '''Clase para actualizar un Vehiculo basado en la tabla Vehiculos'''
+    pass
 
+class Vehiculo(VehiculoBase):
+    '''Clase para realizar operaciones por ID en tabla Vehiculos'''
+    Id: int
 
-class VehiculoResponse(VehiculoBase):
-    """
-    Esquema de respuesta de vehiculo.
-    """
-    au_id: int
-
-    class Config:
-        '''
-        Configuración para permitir la conversión de objetos ORM a modelos Pydantic.
-        '''
-        orm_mode = True
+    # ✅ CORRECCIÓN: Pydantic v2 - reemplazar class Config con model_config
+    model_config = ConfigDict(from_attributes=True)

@@ -1,32 +1,28 @@
-"""
-Schema para roles del sistema de autolavado.
-"""
-from typing import Optional
+'''
+Docstring for schemas.schema_rol
+'''
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
-from pydantic import BaseModel
-
 
 class RolBase(BaseModel):
-    """Base schema para roles."""
-    nombre: str
-    estatus: bool
-    fecha_creacion: Optional[datetime] = None
-    fecha_modificacion: Optional[datetime] = None
+    '''Clase para modelar los campos de tabla Rol'''
+    nombre_rol: str
+    estado: bool
+    fecha_registro: datetime
+    fecha_actualizacion: datetime
 
-
+# pylint: disable=too-few-public-methods, unnecessary-pass
 class RolCreate(RolBase):
-    """Schema para crear roles."""
-
+    '''Clase para crear un Rol basado en la tabla Roles'''
+    pass
 
 class RolUpdate(RolBase):
-    """Schema para actualizar roles."""
-
+    '''Clase para actualizar un Rol basado en la tabla Roles'''
+    pass
 
 class Rol(RolBase):
-    """Schema completo para roles."""
-    id: int
-    
+    '''Clase para realizar operaciones por ID en tabla Roles'''
+    Id: int
 
-    class Config:
-        """Configuración de Pydantic."""
-        orm_mode = True
+    # ✅ CORRECCIÓN: Pydantic v2 - reemplazar class Config con model_config
+    model_config = ConfigDict(from_attributes=True)
